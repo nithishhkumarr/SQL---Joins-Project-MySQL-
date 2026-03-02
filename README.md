@@ -33,9 +33,7 @@ Each table contains 50+ records including NULL and mismatched data to practice r
 
 ---
 
-## 🔗 JOIN Concepts Used in This Project
-
-This project is focused on understanding how different SQL JOIN operations work in real-world data analysis using Customers and Orders tables. The joins were applied to handle matching data, missing records, and business-level analysis.
+##  JOIN Concepts Used in This Project
 
 ---
 
