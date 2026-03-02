@@ -38,83 +38,93 @@ Each table contains 50+ records including NULL and mismatched data to practice r
 ---
 
 ### 🔹 INNER JOIN
-INNER JOIN was used to retrieve only the records that exist in both tables (Customers and Orders).  
-This join helps identify customers who have placed valid orders.
+INNER JOIN was used to retrieve only the matching records present in both tables (customers and orders).  
+This helped in identifying customers who have placed valid orders.
 
 Concept:
-- Returns only matching rows
-- Ignores NULL and unmatched records
-- Commonly used for transactional analysis
-
-Use Case in Project:
-Matching customer names with their order amounts.
+- Returns only matched records from both tables
+- Excludes NULL and non-matching rows
+- Used for relational data analysis
 
 ---
 
 ### 🔹 LEFT JOIN
-LEFT JOIN was used to display all customers, even if they have not placed any orders.  
-If a customer has no order, the order columns return NULL.
+LEFT JOIN was used to display all customers, including those who have not placed any orders.  
+If no matching order exists, the order columns return NULL.
 
 Concept:
-- Returns all records from the left table (Customers)
-- Returns matched records from the right table (Orders)
-- Shows NULL when no match is found
+- Returns all rows from the left table (customers)
+- Returns matching rows from the right table (orders)
+- Shows NULL for unmatched records
 
-Use Case in Project:
+Project Usage:
 - Finding customers with no orders
 - Identifying inactive customers
 
 ---
 
 ### 🔹 RIGHT JOIN
-RIGHT JOIN was used to show all orders, including those that do not have a valid customer ID.  
-This helps in detecting data quality issues and orphan records.
+RIGHT JOIN was used to show all orders, even if they do not have a valid customer in the customers table.
 
 Concept:
-- Returns all records from the right table (Orders)
-- Returns matched records from the left table (Customers)
-- Shows NULL when no matching customer exists
+- Returns all rows from the right table (orders)
+- Returns matched rows from the left table (customers)
+- Displays NULL when customer data is missing
 
-Use Case in Project:
-- Detecting orders with NULL customer_id
-- Finding invalid customer references (data anomalies)
+Project Usage:
+- Detecting invalid customer IDs
+- Finding orphan order records
 
 ---
 
-### 🔹 JOIN with NULL Handling
-Joins were combined with `IS NULL` conditions to detect missing relationships between tables.
+### 🔹 JOIN with WHERE Clause (Filtering Joined Data)
+The WHERE clause was used after JOIN operations to filter the results based on business conditions.
 
 Concept:
-- NULL indicates no match between joined tables
-- Helps in data cleaning and validation
-- Very common in real business datasets
+- Filters rows after the join is performed
+- Helps in applying business logic on joined datasets
+- Essential for real-world data analysis queries
 
-Use Case in Project:
-- Customers who never placed orders
-- Orders without valid customers
+Project Usage:
+- Filtering orders greater than a specific amount
+- Filtering customers by city (e.g., Chennai)
+- Finding customers with NULL matches using `WHERE ... IS NULL`
+
+Example Logic Used:
+- WHERE order_amount > 1000
+- WHERE city = 'Chennai'
+- WHERE customer_id IS NULL
 
 ---
 
-### 🔹 JOIN with Aggregation (Advanced Concept)
-JOIN operations were used together with aggregation functions like COUNT() and SUM() to perform analytical calculations.
+### 🔹 NULL Handling in JOINs
+NULL values were intentionally included in the dataset to understand how joins behave with missing and invalid data.
 
 Concept:
-- GROUP BY + JOIN for customer-level analysis
-- COUNT() for number of orders per customer
-- SUM() for total spending per customer
+- NULL indicates no matching relationship between tables
+- Useful for data validation and cleaning
+- Critical in real business datasets
 
-Use Case in Project:
+Project Usage:
+- Customers without orders (LEFT JOIN + IS NULL)
+- Orders without valid customers (LEFT JOIN + IS NULL)
+
+---
+
+### 🔹 JOIN with Aggregation Functions
+JOIN operations were combined with aggregation functions like COUNT() and SUM() for analytical insights.
+
+Concept:
+- GROUP BY with JOIN for summarized analysis
+- COUNT() to calculate number of orders per customer
+- SUM() to calculate total spending per customer
+
+Project Usage:
 - Total amount spent by each customer
-- Number of orders per customer
+- Number of orders placed per customer
 - Highest spending customer analysis
 
 ---
 
-### 🔹 Real-World Understanding Gained
-Through this project, JOINs were used not just for table linking but for:
-- Business insights
-- Data validation
-- Handling missing and invalid records
-- Customer behavior analysis
-
-This reflects how JOIN operations are actually used in real Data Analyst workflows.
+###  Overall Learning Outcome
+By using JOINs with WHERE clause, NULL handling, and aggregation, this project demonstrates how relational databases are analyzed in real Data Analyst workflows for data cleaning, filtering, and business insight generation.
